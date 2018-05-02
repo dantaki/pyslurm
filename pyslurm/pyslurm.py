@@ -109,7 +109,7 @@ def main():
 		err,out = odir+jobid+'_err', odir+jobid+'_out'
 		head = header(acct,part,cpu,wall,jobid,err,out)
 		_cmd=[]
-		with open(cmd,'r') as f: _cmd = f.readlines().splitlines()
+		with open(cmd,'r') as f: _cmd = [l.rstrip() for l in f]
 		sys.stdout.write('{}\n'.format('\n'.join(head)))
 		if rc != None: sys.stdout.write('source {}\n'.format(rc))
 		sys.stdout.write('{}\n'.format('\n'.join(_cmd)))
